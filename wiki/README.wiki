@@ -53,13 +53,14 @@ In terminal emulator (or connectbot or adb shell or whatever)
 
 su
 
-cp /system/build.prop /sdcard
+cp /system/build.trout.prop /sdcard
 
 Open PropEditor
 
 open /sdcard/build.trout.prop
 
 tap ro.product.name, tap 'opal'
+tap ro.product.device, tap 'sapphire'
 
 hit menu, tap save
 
@@ -70,7 +71,7 @@ back in the terminal
 mount -o rw,remount /system
 
 
-cp /sdcard/build.prop /system/build.prop
+cp /sdcard/build.trout.prop /system/build.trout.prop
 
 mount -o ro,remount /system
 
