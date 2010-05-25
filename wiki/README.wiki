@@ -46,21 +46,32 @@ menu->save
 cp /sdcard/build.prop /system/build.prop
 
 
-Example 2: 
+=Example 2: =
 To make facebook sync work on CM5/G1: 
+
 In terminal emulator (or connectbot or adb shell or whatever)
+
 su
+
 cp /system/build.prop /sdcard
 
 Open PropEditor
+
 open /sdcard/build.trout.prop
+
 tap ro.product.name, tap 'opal'
+
 hit menu, tap save
 
 back in the terminal
+
 (adb remount or)
+
 mount -o rw,remount /system
+
+
 cp /sdcard/build.prop /system/build.prop
+
 mount -o ro,remount /system
 
 reboot. 
