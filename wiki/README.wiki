@@ -2,21 +2,32 @@
 #labels Featured
 
 =Main screen:=
-  * Tapping 'Open File' button opens a (text box) file dialog, (defaulting to /sdcard/); enter the name of a build.prop type file on the sdcard. (cp /system/build.prop /sdcard/build.prop first)
+http://blargification.com/pe/main.png
+
+  * Tapping 'Open File' button opens a (text box) file dialog, (defaulting to /sdcard/); enter the name of a build.prop type file on the sdcard. (cp /system/build.prop /sdcard/build.prop first, editing on /system/ is not supported yet )
   * Opening anything other than a readable **.prop file (based on extension only) will result in an error.
 
 
 =Editor screen:=
+http://blargification.com/pe/editor.png
   * Tapping on a property will give a Suggestion list of values for the clicked property; the suggestion file is based on user submissions; not all suggested values may be appropriate for your device. 
+http://blargification.com/pe/suggest.png
   * Tapping  menu->Add will give a Suggestion screen of new properties to add to the file (all property names are suggested, duplicating an existing property wil overwrite).   
+http://blargification.com/pe/suggest2.png
  * Pressing back will return to the Main screen, abandoning changes.
+
  * Tapping  save saves the file under its current name, saveas opens the filename input to save.
   there is no name checking on the save (so you can saveas build.prop.bak).
 
 =Suggestion list:=
   * Pressing the back button will return to the Editor screen;
+http://blargification.com/pe/manual.png
+
   * Tapping a suggested VALUE will change the selected entry and return to the Editor screen; Selecting "Manual entry" will pop up a manual entry dialog. 
+
   * Tapping  a suggested NAME (from Add in editor) will suggest values per above for the new property.
+
+http://blargification.com/pe/suggest2.png -> http://blargification.com/pe/suggest3.png
 
 
 =Merge:=
