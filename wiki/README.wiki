@@ -28,9 +28,8 @@ Example:
 have /sdcard/mergeme.prop with
 {{{
 ro.product.model=T-Mobile G1
-ro.product.name=opal
 }}}
-to make T-Mobile apps work (cm5 default for model being HTC Dream) and Facebook Sync work
+to make T-Mobile apps work (cm5 default for model being HTC Dream) 
 
 cp /system/build.prop /sdcard
 
@@ -45,3 +44,23 @@ menu->save
 (remount /system readwrite)
 
 cp /sdcard/build.prop /system/build.prop
+
+
+Example 2: 
+To make facebook sync work on CM5/G1: 
+In terminal emulator (or connectbot or adb shell or whatever)
+su
+cp /system/build.prop /sdcard
+
+Open PropEditor
+open /sdcard/build.trout.prop
+tap ro.product.name, tap 'opal'
+hit menu, tap save
+
+back in the terminal
+(adb remount or)
+mount -o rw,remount /system
+cp /sdcard/build.prop /system/build.prop
+mount -o ro,remount /system
+
+reboot. 
