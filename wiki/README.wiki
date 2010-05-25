@@ -60,6 +60,7 @@ Open PropEditor
 open /sdcard/build.trout.prop
 
 tap ro.product.name, tap 'opal'
+
 tap ro.product.device, tap 'sapphire'
 
 hit menu, tap save
