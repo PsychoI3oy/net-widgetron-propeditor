@@ -46,7 +46,7 @@ to make T-Mobile apps work (cm5 default for model being HTC Dream)
 
 open PropEditor
 
-tap "copy /system/*.prop to /sdcard/propeditor/"
+tap "copy /system/**.prop to /sdcard/propeditor/"
 
 open /sdcard/propeditor/build.prop
 
@@ -56,7 +56,7 @@ menu->save
 
 *visually verify it worked, this is still experimental*
 
-tap "copy /sdcard/propeditor/*.prop to /system/"
+tap "copy /sdcard/propeditor/**.prop to /system/"
 
 
 =Example 2: =
@@ -68,7 +68,7 @@ su
 
 open PropEditor
 
-tap "copy /system/*.prop to /sdcard/propeditor/"
+tap "copy /system/**.prop to /sdcard/propeditor/"
 
 open /sdcard/propeditor/build.trout.prop
 
@@ -80,6 +80,6 @@ hit menu, tap save
 
 press back
 
-tap "copy /sdcard/propeditor/*.prop to /system/"
+tap "copy /sdcard/propeditor/**.prop to /system/"
 
 reboot. 
