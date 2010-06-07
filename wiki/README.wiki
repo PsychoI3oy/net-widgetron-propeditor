@@ -4,8 +4,10 @@
 =Main screen:=
 http://blargification.com/pe/main.png
 
-  * Tapping 'Open File' button opens a (text box) file dialog, (defaulting to /sdcard/); enter the name of a build.prop type file on the sdcard. (cp /system/build.prop /sdcard/build.prop first, editing on /system/ is not supported yet )
+  * Tapping 'Open File' button opens a (text box) file dialog, (defaulting to /sdcard/propeditor); enter the name of a build.prop type file on the sdcard. (editing directly on /system/ is not supported yet )
   * Opening anything other than a readable **.prop file (based on extension only) will result in an error.
+  * New in 0.2: Copy /system/**.prop to /sdcard/propeditor: does what it says on the tin
+  * New in 0.2: Copy /sdcard/propeditor/**.prop to /system: remounts system rw, copies **.prop into /system, remounts system ro. 
 
 
 =Editor screen:=
@@ -16,7 +18,7 @@ http://blargification.com/pe/suggest.png
 http://blargification.com/pe/suggest2.png
  * Pressing back will return to the Main screen, abandoning changes.
 
- * Tapping  save saves the file under its current name, saveas opens the filename input to save.
+ * Tapping  save saves the file under its current name, saveas opens the filename input to save (but 'save' after this will save as the original filename)
   there is no name checking on the save (so you can saveas build.prop.bak).
 
 =Suggestion list:=
@@ -42,9 +44,11 @@ ro.product.model=T-Mobile G1
 }}}
 to make T-Mobile apps work (cm5 default for model being HTC Dream) 
 
-cp /system/build.prop /sdcard
+open PropEditor
 
-open /sdcard/build.prop with PropEditor
+tap "copy /system/*.prop to /sdcard/propeditor/"
+
+open /sdcard/propeditor/build.prop
 
 menu->merge, pick /sdcard/mergeme.prop
 
@@ -52,9 +56,7 @@ menu->save
 
 *visually verify it worked, this is still experimental*
 
-(remount /system readwrite)
-
-cp /sdcard/build.prop /system/build.prop
+tap "copy /sdcard/propeditor/*.prop to /system/"
 
 
 =Example 2: =
@@ -64,11 +66,11 @@ In terminal emulator (or connectbot or adb shell or whatever)
 
 su
 
-cp /system/build.trout.prop /sdcard
+open PropEditor
 
-Open PropEditor
+tap "copy /system/*.prop to /sdcard/propeditor/"
 
-open /sdcard/build.trout.prop
+open /sdcard/propeditor/build.trout.prop
 
 tap ro.product.name, tap 'opal'
 
@@ -76,15 +78,8 @@ tap ro.product.device, tap 'sapphire'
 
 hit menu, tap save
 
-back in the terminal
+press back
 
-(adb remount or)
-
-mount -o rw,remount /system
-
-
-cp /sdcard/build.trout.prop /system/build.trout.prop
-
-mount -o ro,remount /system
+tap "copy /sdcard/propeditor/*.prop to /system/"
 
 reboot. 
