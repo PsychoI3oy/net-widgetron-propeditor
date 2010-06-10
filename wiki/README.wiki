@@ -5,6 +5,7 @@
 http://blargification.com/pe/main.png
 
   * Tapping 'Open File' button opens a (basic) file browser, (defaulting to /system)
+http://blargification.com/pe/filebrowser.png
   * Opening anything other than a readable **.prop file (based on extension only) will result in an error.
   * New in 0.3: Backup /system/**.prop to /sdcard/propeditor: does what it says on the tin
   * New in 0.3: Restore /sdcard/propeditor/**.prop to /system: remounts system rw, copies **.prop into /system, remounts system ro. 
