@@ -4,10 +4,10 @@
 =Main screen:=
 http://blargification.com/pe/main.png
 
-  * Tapping 'Open File' button opens a (text box) file dialog, (defaulting to /sdcard/propeditor); enter the name of a build.prop type file on the sdcard. (editing directly on /system/ is not supported yet )
+  * Tapping 'Open File' button opens a (basic) file browser, (defaulting to /system)
   * Opening anything other than a readable **.prop file (based on extension only) will result in an error.
-  * New in 0.2: Copy /system/**.prop to /sdcard/propeditor: does what it says on the tin
-  * New in 0.2: Copy /sdcard/propeditor/**.prop to /system: remounts system rw, copies **.prop into /system, remounts system ro. 
+  * New in 0.3: Backup /system/**.prop to /sdcard/propeditor: does what it says on the tin
+  * New in 0.3: Restore /sdcard/propeditor/**.prop to /system: remounts system rw, copies **.prop into /system, remounts system ro. 
 
 
 =Editor screen:=
@@ -46,40 +46,26 @@ to make T-Mobile apps work (cm5 default for model being HTC Dream)
 
 open PropEditor
 
-tap "copy /system/**.prop to /sdcard/propeditor/"
-
-open /sdcard/propeditor/build.prop
+open /system/build.prop
 
 menu->merge, pick /sdcard/mergeme.prop
 
-menu->save
-
 *visually verify it worked, this is still experimental*
 
-tap "copy /sdcard/propeditor/**.prop to /system/"
+menu->save
 
 
 =Example 2: =
 To make facebook sync work on CM5/G1: 
 
-In terminal emulator (or connectbot or adb shell or whatever)
-
-su
-
 open PropEditor
 
-tap "copy /system/**.prop to /sdcard/propeditor/"
-
-open /sdcard/propeditor/build.trout.prop
+open /system/build.trout.prop
 
 tap ro.product.name, tap 'opal'
 
 tap ro.product.device, tap 'sapphire'
 
 hit menu, tap save
-
-press back
-
-tap "copy /sdcard/propeditor/**.prop to /system/"
 
 reboot. 
