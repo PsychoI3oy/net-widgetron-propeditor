@@ -1,0 +1,69 @@
+# Main screen: #
+![http://blargification.com/pe/main.png](http://blargification.com/pe/main.png)
+
+  * Tapping 'Open File' button opens a (basic) file browser, (defaulting to /system)
+![http://blargification.com/pe/filebrowser.png](http://blargification.com/pe/filebrowser.png)
+  * Opening anything other than a readable .prop file (based on extension only) will result in an error.
+  * New in 0.3: Backup /system/.prop to /sdcard/propeditor: does what it says on the tin
+  * New in 0.3: Restore /sdcard/propeditor/.prop to /system: remounts system rw, copies .prop into /system, remounts system ro.
+
+
+# Editor screen: #
+![http://blargification.com/pe/editor.png](http://blargification.com/pe/editor.png)
+  * Tapping on a property will give a Suggestion list of values for the clicked property; the suggestion file is based on user submissions; not all suggested values may be appropriate for your device.
+![http://blargification.com/pe/suggest.png](http://blargification.com/pe/suggest.png)
+  * Tapping  menu->Add will give a Suggestion screen of new properties to add to the file (all property names are suggested, duplicating an existing property wil overwrite).
+![http://blargification.com/pe/suggest2.png](http://blargification.com/pe/suggest2.png)
+  * Pressing back will return to the Main screen, abandoning changes.
+
+  * Tapping  save saves the file under its current name, saveas opens the filename input to save (but 'save' after this will save as the original filename)
+> > there is no name checking on the save (so you can saveas build.prop.bak).
+
+# Suggestion list: #
+  * Pressing the back button will return to the Editor screen;
+![http://blargification.com/pe/manual.png](http://blargification.com/pe/manual.png)
+
+  * Tapping a suggested VALUE will change the selected entry and return to the Editor screen; Selecting "Manual entry" will pop up a manual entry dialog.
+
+  * Tapping  a suggested NAME (from Add in editor) will suggest values per above for the new property.
+
+![http://blargification.com/pe/suggest2.png](http://blargification.com/pe/suggest2.png) -> ![http://blargification.com/pe/suggest3.png](http://blargification.com/pe/suggest3.png)
+
+
+# Merge: #
+With an existing build.prop open, you can 'merge' another build.prop file to overwrite/add the settings in it. This should make it easy for users with a list of common changes to modify their build.prop
+after flashing a new CM (or other) update.
+
+Example:
+
+have /sdcard/mergeme.prop with
+```
+ro.product.model=T-Mobile G1
+```
+to make T-Mobile apps work (cm5 default for model being HTC Dream)
+
+open PropEditor
+
+open /system/build.prop
+
+menu->merge, pick /sdcard/mergeme.prop
+
+**visually verify it worked, this is still experimental**
+
+menu->save
+
+
+# Example 2: #
+To make facebook sync work on CM5/G1:
+
+open PropEditor
+
+open /system/build.trout.prop
+
+tap ro.product.name, tap 'opal'
+
+tap ro.product.device, tap 'sapphire'
+
+hit menu, tap save
+
+reboot.
